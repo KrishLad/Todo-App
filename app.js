@@ -11,16 +11,16 @@ var items = [];
 var workitems = [];
 app.get("/", function(req,res){
    let day = date.getDate();
-    res.render("index", {title:day, newitem: items}); //dictionary with keys as ejs variables and values as js variables
+    res.render("list", {title:day, newitem: items}); //dictionary with keys as ejs variables and values as js variables
 }); 
 
 app.get("/work", function (req,res) {
-   res.render("index", {title:"Work Related", newitem: workitems});
+   res.render("list", {title:"Work Related", newitem: workitems});
 });
 
 app.post("/",function (req, res) {
 
-    if (req.body.index === "Work"){
+    if (req.body.list === "Work"){
         workitems.push(item);
         res.redirect("/work");
     } else{
